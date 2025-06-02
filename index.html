@@ -370,7 +370,7 @@
           </div>
           <div class="row">
             <div class="col-sm-12 col-md-6 col-lg-6 col-12 Resposive">
-              <form  action="https://formspree.io/f/xovwqjvp" method="POST"
+              <form id="Resetform"  action="https://formspree.io/f/xovwqjvp" method="POST"
  class="row ">
                 <div class="col-md-12" >
                   <label for="inputEmail4" class="form-label">Name</label>
@@ -418,6 +418,12 @@
  
   <div class="container-fluid bg-primary text-white text-center fs-5 p-3">Developed By Dhiraj B Gupta</div>
   <script>
+          document.getElementById("myForm").addEventListener("submit", function(event) {
+              event.preventDefault();
+            alert("Form submitted successfully!");
+             this.reset();
+          }
+
     AOS.init();
   </script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
