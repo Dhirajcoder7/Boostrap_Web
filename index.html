@@ -370,7 +370,7 @@
           </div>
           <div class="row">
             <div class="col-sm-12 col-md-6 col-lg-6 col-12 Resposive">
-              <form id="Resetform"  action="https://formspree.io/f/xovwqjvp" method="POST"
+              <form id="cont-form"  action="https://formspree.io/f/xovwqjvp" method="POST"
  class="row ">
                 <div class="col-md-12" >
                   <label for="inputEmail4" class="form-label">Name</label>
@@ -396,7 +396,7 @@
                 
           
                 <div class="col-12 mt-3">
-                  <button type="submit" class="btn btn-primary">Send Info</button>
+                  <button type="submit" id="cont-btn" class="btn btn-primary">Send Info</button>
                 </div>
               </form>
             </div>
@@ -418,11 +418,30 @@
  
   <div class="container-fluid bg-primary text-white text-center fs-5 p-3">Developed By Dhiraj B Gupta</div>
   <script>
-          document.getElementById("Resetform").addEventListener("submit", function(event) {
-              event.preventDefault();
-            alert("Form submitted successfully!");
-             this.reset();
-          });
+          document.getElementById('cont-form').addEventListener('submit', function(event) {
+      // Prevents the default form submission behavior (page reload)
+      event.preventDefault();
+
+      // Send form data to Formspree (You can add your logic here, if any)
+      const formData = new FormData(this);
+      fetch(this.action, {
+          method: this.method,
+          body: formData,
+          headers: {
+              'Accept': 'application/json'
+          }
+      }).then(response => {
+          if (response.ok) {
+              // Form successfully submitted, clear the form fields
+              document.getElementById('cont-form').reset();
+              alert("Form submitted successfully!");
+          } else {
+              alert("There was an issue with your submission.");
+          }
+      }).catch(error => {
+          alert("An error occurred. Please try again.");
+      });
+  });
 
     AOS.init();
   </script>
